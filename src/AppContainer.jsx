@@ -8,6 +8,8 @@ export class AppContainer extends Component {
 		super(props);
 
 		this.state = {
+			limitDate: [],
+			period: '',
 			date: {
 				secs: '00',
 				mins: '00',
@@ -19,21 +21,22 @@ export class AppContainer extends Component {
 		};
 	}
 
-	componentDidMount() {
-		this.update = setInterval(() => this.updateDate(), 1000);
-	}
-
-	clearCountDown() {
-		clearInterval(this.update);
+	componentDidUpdate(prevProps, prevState) {
+		if (prevState !== this.state) {
+			this.update = setInterval(() => this.updateDate(), 1000);
+		}
 	}
 
 	componentWillUnmount() {
 		this.clearCountDown();
 	}
 
+	clearCountDown() {
+		clearInterval(this.update);
+	}
+
 	updateDate() {
-		const limit = new Date(2021, 2, 23, 0);
-		const date = calcTime(limit);
+		const date = calcTime(this.state.limitDate);
 
 		this.setState({date});
 		// console.log(this.state.date);
@@ -41,6 +44,18 @@ export class AppContainer extends Component {
 
 	handleSubmit = ev => {
 		ev.preventDefault();
+		const inputDate = ev.target.time.value.split('/');
+		const period = ev.target.period.value;
+
+		const limitDate = inputDate.map(date => {
+			if (date === inputDate[1]) {
+				return parseInt(date) - 1;
+			}
+
+			return parseInt(date);
+		});
+
+		this.setState({limitDate: new Date(...limitDate), period: period});
 	};
 
 	render() {
@@ -53,3 +68,10 @@ export class AppContainer extends Component {
 }
 
 export default AppContainer;
+
+// [
+// 	parseInt(inputDate[1]),
+// 	parseInt(inputDate[1]) - 1,
+// 	parseInt(inputDate[1]),
+// 	inputDate[3],
+// ];
