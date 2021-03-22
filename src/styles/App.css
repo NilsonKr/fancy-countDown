@@ -1,0 +1,39 @@
+/* --Grayish-blue: hsl(237, 18%, 59%);
+--Soft-red: hsl(345, 95%, 68%);
+
+--White: hsl(0, 0%, 100%);
+--Dark-desaturated-blue: hsl(236, 21%, 26%);
+--Very-dark-blue: hsl(235, 16%, 14%);
+--Very-dark-blackblue: hsl(234, 17%, 12%); */
+
+.app__container {
+	min-height: 100vh;
+	width: 100%;
+	background: var(--Very-dark-blackblue) url('../images/bg-stars.svg');
+}
+
+.app__header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 200px;
+	padding: 0 5px;
+}
+
+.app__header h1 {
+	text-align: center;
+	color: var(--White);
+	font-size: 3rem;
+}
+
+.count {
+	width: clamp(320px, 100%, 1200px);
+	padding: 10px;
+	margin: 0 auto;
+}
+.count__container {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}

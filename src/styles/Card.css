@@ -1,0 +1,63 @@
+/* --Grayish-blue: hsl(237, 18%, 59%);
+--Soft-red: hsl(345, 95%, 68%);
+
+--White: hsl(0, 0%, 100%);
+--Dark-desaturated-blue: hsl(236, 21%, 26%);
+--Very-dark-blue: hsl(235, 16%, 14%);
+--Very-dark-blackblue: hsl(234, 17%, 12%);
+*/
+
+.card {
+	margin: 15px 5px;
+	width: clamp(130px, 100%, 170px);
+	max-height: 220px;
+	text-align: center;
+}
+.card--title {
+	font-size: 2rem;
+	color: var(--White);
+}
+.card__container {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 170px;
+	background: var(--Dark-desaturated-blue);
+	border-radius: 15px;
+}
+.card__container::before {
+	content: '';
+	position: absolute;
+	right: 0;
+	width: 5px;
+	height: 11px;
+	border-bottom-left-radius: 110px;
+	border-top-left-radius: 110px;
+	background: var(--Very-dark-blackblue);
+}
+.card__container::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	width: 5px;
+	height: 11px;
+	border-bottom-right-radius: 110px;
+	border-top-right-radius: 110px;
+	background: var(--Very-dark-blackblue);
+}
+
+.card__shadow {
+	position: absolute;
+	top: 0;
+	height: 50%;
+	width: 100%;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.17) 96%, rgba(0, 0, 0, 0.25));
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+}
+.card__indicator {
+	color: var(--Soft-red);
+	font-size: 4rem;
+}
