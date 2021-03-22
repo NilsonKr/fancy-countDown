@@ -1,16 +1,12 @@
 import React from 'react';
 
-import facebook from '../images/icon-facebook.svg';
-import pinterest from '../images/icon-pinterest.svg';
-import instagram from '../images/icon-instagram.svg';
-
 const footer = () => {
 	return (
 		<footer className='app__footer'>
 			<div className='footer__media'>
-				<img src={facebook} alt='' />
-				<img src={pinterest} alt='' />
-				<img src={instagram} alt='' />
+				<span className='footer__icon facebook' alt=''></span>
+				<span className='footer__icon pinterest' alt=''></span>
+				<span className='footer__icon instagram' alt=''></span>
 			</div>
 			<div className='footer__credits'>
 				Challenge from
