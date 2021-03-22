@@ -39,10 +39,14 @@ export class AppContainer extends Component {
 		// console.log(this.state.date);
 	}
 
+	handleSubmit = ev => {
+		ev.preventDefault();
+	};
+
 	render() {
 		return (
 			<React.Fragment>
-				<App time={this.state.date} />
+				<App time={this.state.date} handleSubmit={this.handleSubmit} />
 			</React.Fragment>
 		);
 	}

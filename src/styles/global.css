@@ -27,3 +27,13 @@ body {
 		var(--Very-dark-blackblue),
 		var(--Dark-desaturated-blue)
 	); */
+
+.btn {
+	border: none;
+	outline: none;
+}
+
+.btn-primary {
+	background: var(--Soft-red);
+	color: var(--White);
+}

@@ -1,0 +1,55 @@
+.form__dateContainer {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 80%;
+	max-width: 800px;
+	min-height: 100px;
+	margin-top: 50px;
+}
+
+.form__dateContainer input {
+	padding: 5px 10px;
+	margin: 10px 0;
+	background: var(--Grayish-blue);
+	border: none;
+	outline: none;
+	border-radius: 20px;
+	font-size: 1.5rem;
+	color: var(--White);
+}
+.form__date {
+	position: relative;
+	min-width: 300px;
+	width: 60%;
+}
+.form__date input {
+	position: relative;
+	width: 100%;
+}
+
+.form__period {
+	max-width: 80px;
+	text-align: center;
+}
+
+.form__date--label {
+	position: absolute;
+	top: -40%;
+	color: var(--White);
+	font-size: 1.4rem;
+}
+
+.form__date--label b {
+	color: var(--Soft-red);
+}
+.form__submit {
+	padding: 10px;
+	font-size: 1.3rem;
+	border-radius: 20px;
+}
+
+input::-webkit-input-placeholder {
+	color: var(--White);
+}
