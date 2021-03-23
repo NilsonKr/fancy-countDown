@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import calcTime from './components/calcTime';
+import calcTime from './components/utils/calcTime';
+import Validator from './components/utils/validation';
 
 import App from './components/App';
 
@@ -9,6 +10,7 @@ export class AppContainer extends Component {
 
 		this.state = {
 			limitDate: [],
+			error: null,
 			period: '',
 			date: {
 				secs: '00',
@@ -47,15 +49,20 @@ export class AppContainer extends Component {
 		const inputDate = ev.target.time.value.split('/');
 		const period = ev.target.period.value;
 
-		const limitDate = inputDate.map(date => {
-			if (date === inputDate[1]) {
-				return parseInt(date) - 1;
-			}
+		const limitDate = [
+			parseInt(inputDate[0]),
+			parseInt(inputDate[1]) - 1,
+			parseInt(inputDate[2]),
+			parseInt(inputDate[3]),
+		];
 
-			return parseInt(date);
-		});
+		const validation = new Validator(limitDate, period);
 
-		this.setState({limitDate: new Date(...limitDate), period: period});
+		const isValidate = validation.validateDate();
+
+		console.log(isValidate);
+
+		// this.setState({limitDate: new Date(...limitDate), period: period});
 	};
 
 	render() {
