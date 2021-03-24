@@ -22,6 +22,7 @@ class Validator {
 		return {
 			isValid: this.isValidate,
 			message: this.message,
+			date: this.date,
 		};
 	}
 
@@ -60,14 +61,14 @@ class Validator {
 		const date = new Date(this.year, this.month, this.day, this.hour);
 		const now = new Date();
 
-		if (this.month > monthDays[this.month - 1]) {
-			this.isValidate = false;
-			this.message = 'Invalid Month Days , Check it And Try Again  😨❌';
-		}
 		if (date - now < 0) {
 			this.isValidate = false;
 			this.message =
 				'Old Date! please set a date in the future  , Check it And Try Again  😨❌';
+		}
+
+		if (this.isValidate) {
+			this.date = new Date(this.year, this.month, this.day, this.hour);
 		}
 	}
 
@@ -91,7 +92,6 @@ class Validator {
 		}
 
 		if (this.period === 'PM' && this.hour === 24) {
-			console.log('yes');
 			this.hour = 12;
 		}
 

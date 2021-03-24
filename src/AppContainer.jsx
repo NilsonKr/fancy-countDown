@@ -60,7 +60,7 @@ export class AppContainer extends Component {
 		const isValidate = validation.validateDate();
 
 		if (isValidate.isValid) {
-			this.setState({limitDate: new Date(...limitDate), error: null});
+			this.setState({limitDate: isValidate.date, error: null});
 		} else {
 			this.setState({
 				error: isValidate.message,
