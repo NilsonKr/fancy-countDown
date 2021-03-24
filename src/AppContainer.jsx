@@ -11,7 +11,6 @@ export class AppContainer extends Component {
 		this.state = {
 			limitDate: [],
 			error: null,
-			period: '',
 			date: {
 				secs: '00',
 				mins: '00',
@@ -24,7 +23,7 @@ export class AppContainer extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		if (prevState !== this.state) {
+		if (prevState.limitDate !== this.state.limitDate) {
 			this.update = setInterval(() => this.updateDate(), 1000);
 		}
 	}
@@ -60,15 +59,31 @@ export class AppContainer extends Component {
 
 		const isValidate = validation.validateDate();
 
-		console.log(isValidate);
-
-		// this.setState({limitDate: new Date(...limitDate), period: period});
+		if (isValidate.isValid) {
+			this.setState({limitDate: new Date(...limitDate), error: null});
+		} else {
+			this.setState({
+				error: isValidate.message,
+				date: {
+					secs: '00',
+					mins: '00',
+					hours: '00',
+					days: '00',
+					months: '00',
+					years: '00',
+				},
+			});
+		}
 	};
 
 	render() {
 		return (
 			<React.Fragment>
-				<App time={this.state.date} handleSubmit={this.handleSubmit} />
+				<App
+					time={this.state.date}
+					handleSubmit={this.handleSubmit}
+					error={this.state.error}
+				/>
 			</React.Fragment>
 		);
 	}

@@ -18,13 +18,42 @@ class Validator {
 		this.message = 'Its Alright';
 
 		this.validateInputs();
-		this.defineDate();
-		this.isNegative();
 
 		return {
 			isValid: this.isValidate,
 			message: this.message,
 		};
+	}
+
+	validateQuantity() {
+		switch (this.isValidate) {
+			case this.year < 0:
+				this.isValidate = false;
+				this.message = 'Invalid Year , Check it And Try Again  😨❌';
+				this.continue = false;
+
+				break;
+			case this.month > 12 || this.month < 0:
+				this.isValidate = false;
+				this.message = 'Invalid Month , Check it And Try Again  😨❌';
+				this.continue = false;
+
+				break;
+			case this.days > monthDays[this.month] || this.days < 0:
+				this.isValidate = false;
+				this.message = 'Invalid Days , Check it And Try Again  😨❌';
+				this.continue = false;
+
+				break;
+			case this.hour > 24 || this.hour < 0:
+				this.isValidate = false;
+				this.message = 'Invalid Hour , Check it And Try Again  😨❌';
+				this.continue = false;
+
+				break;
+			default:
+				this.defineDate();
+		}
 	}
 
 	isNegative() {
@@ -45,10 +74,15 @@ class Validator {
 	validateInputs() {
 		this.limit.forEach(input => {
 			if (isNaN(input)) {
+				this.continue = false;
 				this.isValidate = false;
 				this.message = 'Invalid Date, Check it And Try Again 😨❌';
 			}
 		});
+
+		if (this.isValidate) {
+			this.validateQuantity();
+		}
 	}
 
 	defineDate() {
@@ -64,6 +98,8 @@ class Validator {
 		if (this.period === 'AM' && this.hour === 12) {
 			this.hour = 0;
 		}
+
+		this.isNegative();
 	}
 }
 
